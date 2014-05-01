@@ -1,0 +1,783 @@
+# //  ModelSim SE 6.1b Sep  8 2005 Linux 2.6.18-371.el5
+# //
+# //  Copyright Mentor Graphics Corporation 2005
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading project test_span
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+view wave
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/scanRisk.do
+run 1000ns
+# ** Note: $finish    : /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/test_bench.sv(132)
+#    Time: 4590 fs  Iteration: 0  Instance: :test_bench
+# 1
+# Break at /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/test_bench.sv line 132
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/scanRisk.do
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1000ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/scanRisk.do
+run 100ns
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+view signals
+# .main_pane.signals.interior.cs
+write format wave -window .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/scanRisk.do
+run 100ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/scanRisk.do
+run 10ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/scanRisk.do
+run 10ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/scanRisk.do
+run 10ns
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+veiw signals
+# invalid command name "veiw"
+view signals
+# .main_pane.signals.interior.cs
+write format wave -window .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/span_cme.do
+run 10ns
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/scanRisk.do
+run 10ns
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+view signals
+# .main_pane.signals.interior.cs
+write format wave -window .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/span_cme.do
+run 10ns
+restart
+run 1ns
+restart
+run 0.001ns
+
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+restart
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+view signals
+# .main_pane.signals.interior.cs
+run 0.01ns
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/span_cme.do
+10 ns
+# invalid command name "10"
+run 10ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+restart
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/span_cme.do
+run 10ns
+view signals
+# .main_pane.signals.interior.cs
+view wave
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+restart
+run 10ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+view signals
+# .main_pane.signals.interior.cs
+view wave
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+run 10ns
+view signals
+# .main_pane.signals.interior.cs
+view wave
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+restart
+run 10ns
+view wave
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/span_cme.do
+run 10ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 10ns
+restart
+run 0.01ns
+restrat
+# invalid command name "restrat"
+
+restart
+run 0.0001ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 10ns
+view -new wave
+# .main_pane.mdi.interior.cs.vm.paneset.cli_3.wf.clip.cs.pw.wf
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+view signals
+# .main_pane.signals.interior.cs
+run 100ns
+# Break key hit 
+# Simulation stop requested.
+write format wave -window .main_pane.mdi.interior.cs.vm.paneset.cli_3.wf.clip.cs.pw.wf /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+run 1ns
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+1 ns
+# invalid command name "1"
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+view signals
+# .main_pane.signals.interior.cs
+run 1ns
+write format wave -window .main_pane.mdi.interior.cs.vm.paneset.cli_3.wf.clip.cs.pw.wf /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+view signals
+# .main_pane.signals.interior.cs
+run 1ns
+# Compile of interMonthSpread.sv failed with 1 errors.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 1 failed with 1 error. 
+# Compile of interMonthSpread.sv failed with 1 errors.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 1 failed with 1 error. 
+# Compile of interMonthSpread.sv failed with 1 errors.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 1 failed with 1 error. 
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+view wave
+# .main_pane.mdi.interior.cs.vm.paneset.cli_2.wf.clip.cs.pw.wf
+view signals
+# .main_pane.signals.interior.cs
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+1 ns
+# invalid command name "1"
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv failed with 1 errors.
+# 4 compiles, 1 failed with 1 error. 
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+# Load canceled
+write format wave -window .main_pane.mdi.interior.cs.vm.paneset.cli_2.wf.clip.cs.pw.wf /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+veiw wave
+# invalid command name "veiw"
+view wave
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+1 ns
+# invalid command name "1"
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+run 1ns
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+restart
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+do /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+vsim work.test_bench
+# vsim work.test_bench 
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+restart
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+run 1ns
+# Compile of interMonthSpread.sv was successful.
+# Compile of scanRisk.sv was successful.
+# Compile of span_cme.sv was successful.
+# Compile of test_bench.sv was successful.
+# 4 compiles, 0 failed with no errors. 
+restart
+# Loading work.test_bench
+# Loading work.span_cme
+# Loading work.scanRisk
+# Loading work.interMonthSpread
+run 1ns
+write format wave -window .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf /home/user6/spring14/vvg2111/Desktop/restart/projectfortest/vsim6/interMonthSpread.do
+vie2 signals
+# invalid command name "vie2"
+view signals
+# .main_pane.signals.interior.cs
+view wave
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf

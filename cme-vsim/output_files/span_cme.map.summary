@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Mon Apr 28 14:56:11 2014
+Quartus II 32-bit Version : 13.1.1 Build 166 11/26/2013 SJ Full Version
+Revision Name : span_cme
+Top-level Entity Name : span_cme
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 1549
+Total pins : 42
+Total virtual pins : 0
+Total block memory bits : 0
+Total DSP Blocks : 18
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI TX Channels : 0
+Total PLLs : 0
+Total DLLs : 0

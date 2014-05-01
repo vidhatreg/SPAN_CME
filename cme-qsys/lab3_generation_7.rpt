@@ -1,0 +1,18 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: ip-generate --project-directory=/home/user6/spring14/vvg2111/Desktop/restart/lab3-qsys/ --output-directory=/home/user6/spring14/vvg2111/Desktop/restart/lab3-qsys/lab3/ --report-file=bsf:/home/user6/spring14/vvg2111/Desktop/restart/lab3-qsys/lab3.bsf --system-info=DEVICE_FAMILY="Cyclone V" --system-info=DEVICE=5CSXFC6D6F31C8ES --system-info=DEVICE_SPEEDGRADE=8_H6 --component-file=/home/user6/spring14/vvg2111/Desktop/restart/lab3-qsys/lab3.qsys
+Progress: Loading lab3-qsys/lab3.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 13.1]
+Progress: Parameterizing module clk_0
+Progress: Adding hps_0 [altera_hps 13.1.1]
+Progress: Parameterizing module hps_0
+Progress: Adding master_0 [altera_jtag_avalon_master 13.1]
+Progress: Parameterizing module master_0
+Progress: Adding span_cme_0 [span_cme 1.0]
+Progress: Parameterizing module span_cme_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ip-generate succeeded.
+Info: Stopping: Create block symbol file (.bsf)
