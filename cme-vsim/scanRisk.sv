@@ -1,6 +1,6 @@
 module scanRisk(	input logic 			clk,
 						input logic 			reset,
-						input logic [15:0]	PriceScanRange,
+						input logic [15:0]	priceScanRange,
 						input logic [15:0]		position [0:7],
 						
 						output logic [15:0]	scanningRisk
@@ -36,37 +36,37 @@ module scanRisk(	input logic 			clk,
 		
 				netPos = (((position[0]+ position[1])+ (position[2]+ position[3]))+ ((position[4]+ position[5])+ (position[6]+ position[7])));				
 
-				priceChange[0] =  8'd42 * PriceScanRange;		//row 3
+				priceChange[0] =  8'd42 * priceScanRange;		//row 3
 
-				priceChange[1] = -8'd42 * PriceScanRange; 	//row 5
+				priceChange[1] = -8'd42 * priceScanRange; 	//row 5
 
-				priceChange[2] =  8'd86 * PriceScanRange;		//row 7
+				priceChange[2] =  8'd86 * priceScanRange;		//row 7
 
-				priceChange[3] = -8'd86 * PriceScanRange;		//row 9
+				priceChange[3] = -8'd86 * priceScanRange;		//row 9
 
-				priceChange[4] =  8'd128 * PriceScanRange;	//row 11
+				priceChange[4] =  8'd128 * priceScanRange;	//row 11
 
-				priceChange[5] = -8'd128 * PriceScanRange;	//row 13
+				priceChange[5] = -8'd128 * priceScanRange;	//row 13
 
-				priceChange[6] =  8'd127 * PriceScanRange;		//row 15
+				priceChange[6] =  8'd127 * priceScanRange;		//row 15
 
-				priceChange[7] = -8'd127 * PriceScanRange;		//row 16
+				priceChange[7] = -8'd127 * priceScanRange;		//row 16
 
-//				priceChange[0] =  8'd33 * PriceScanRange;		//row 3
+//				priceChange[0] =  8'd33 * priceScanRange;		//row 3
 //
-//				priceChange[1] = -8'd33 * PriceScanRange; 	//row 5
+//				priceChange[1] = -8'd33 * priceScanRange; 	//row 5
 //
-//				priceChange[2] =  8'd67 * PriceScanRange;		//row 7
+//				priceChange[2] =  8'd67 * priceScanRange;		//row 7
 //
-//				priceChange[3] = -8'd67 * PriceScanRange;		//row 9
+//				priceChange[3] = -8'd67 * priceScanRange;		//row 9
 //
-//				priceChange[4] =  8'd100 * PriceScanRange;	//row 11
+//				priceChange[4] =  8'd100 * priceScanRange;	//row 11
 //
-//				priceChange[5] = -8'd100 * PriceScanRange;	//row 13
+//				priceChange[5] = -8'd100 * priceScanRange;	//row 13
 //
-//				priceChange[6] =  8'd99 * PriceScanRange;		//row 15
+//				priceChange[6] =  8'd99 * priceScanRange;		//row 15
 //
-//				priceChange[7] = -8'd99 * PriceScanRange;		//row 16
+//				priceChange[7] = -8'd99 * priceScanRange;		//row 16
 
 				
 				

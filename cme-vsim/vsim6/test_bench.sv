@@ -9,7 +9,7 @@ module test_bench;
  logic  write;
  logic  chipselect;
 						
- logic [15:0] PriceScanRange;
+ logic [15:0] priceScanRange;
  logic [15:0] readData;
  logic read;
 integer i;
