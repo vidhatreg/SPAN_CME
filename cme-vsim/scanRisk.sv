@@ -2,12 +2,12 @@
 `define compareUnity(x,y,z) (x) ? (y) : (z);
 
 
-module scanRisk(	input logic 			clk,
-						input logic 			reset,
-						input logic [15:0]	priceScanRange,
-						input logic [15:0]		position [0:7],
-						
-						output logic [15:0]	scanningRisk
+module scanRisk(	
+input 	logic 			clk,
+input 	logic 			reset,
+input 	logic [15:0]	priceScanRange,
+input 	logic [15:0]	position [0:7],
+output 	logic [15:0]	scanningRisk
 );
 
 

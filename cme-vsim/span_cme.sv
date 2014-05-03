@@ -1,13 +1,12 @@
 module span_cme(
-input logic clk, 
-input logic 			reset, 
-input logic [15:0] writeData,
-input logic [5:0] offset,
-input logic  write,
-input 	 chipselect,
-
-output	logic [15:0] readData,
-input  logic read 
+input 	logic 			clk, 
+input 	logic 			reset, 
+input 	logic [15:0] 	writeData,
+input 	logic [5:0] 	offset,
+input		logic  			write,
+input 	logic				chipselect,
+input  	logic 			read, 
+output	logic [15:0] 	readData
 );
 
 reg [15:0] initialMargin;
@@ -24,12 +23,13 @@ reg [7:0] ratio[0:1];
 reg [7:0] interRate;
 logic startScanRisk, startInterMonth, startCross;
 integer i;
+wire spreadDone;
 
 scanRisk scanRisk0(.reset(startScanRisk), .*);
 
 crossComm crossComm0(.reset(startCross), .*);
 
-interMonthSpread interMonthSpread0(.reset(startInterMonth), .*);	
+interMonthSpread interMonthSpread0(.reset(startInterMonth), .done(spreadDone), .*);	
 
 
 always_ff @ (posedge clk) begin
@@ -57,53 +57,52 @@ always_ff @ (posedge clk) begin
 			
 	end else if (chipselect && write) begin
 			case (offset) 
-				6'd0 :   priceScanRange <= writeData[15:0];
-				6'd1 :	position[0] <= writeData[15:0];
-				6'd2 :	position[1] <= writeData[15:0];
-				6'd3 :	position[2] <= writeData[15:0];
-				6'd4 :	position[3] <= writeData[15:0];
-				6'd5 :	position[4] <= writeData[15:0];
-				6'd6 :	position[5] <= writeData[15:0];
-				6'd7 :	position[6] <= writeData[15:0];
-				6'd8 :	begin position[7] <= writeData[15:0];
-								startScanRisk <= 1; 
+				6'd0 	:  priceScanRange 			<= writeData[15:0];
+				6'd1 	:	position[0] 				<= writeData[15:0];
+				6'd2 	:	position[1] 				<= writeData[15:0];
+				6'd3 	:	position[2] 				<= writeData[15:0];
+				6'd4 	:	position[3] 				<= writeData[15:0];
+				6'd5 	:	position[4] 				<= writeData[15:0];
+				6'd6 	:	position[5] 				<= writeData[15:0];
+				6'd7 	:	position[6] 				<= writeData[15:0];
+				6'd8 	:	begin position[7] 		<= writeData[15:0];
+								startScanRisk 			<= 1'd1; 				//Starting Scanning Risk calculation
 							end
-				6'd9 :	maturity[0] <= writeData[7:0];
-				6'd10 :	maturity[1] <= writeData[7:0];
-				6'd11 :	maturity[2] <= writeData[7:0];
-				6'd12 :	maturity[3] <= writeData[7:0];
-				6'd13 :	maturity[4] <= writeData[7:0];
-				6'd14 :	maturity[5] <= writeData[7:0];
-				6'd15 :	maturity[6] <= writeData[7:0];
-				6'd16 :	maturity[7] <= writeData[7:0];
-				6'd17 :	tierMax[0] <= writeData[3:0];
-				6'd18 :	tierMax[1] <= writeData[3:0];
-				6'd19 :	tierMax[2] <= writeData[3:0];
-				6'd20 :	spreadCharge[0] <= writeData[7:0];
-				6'd21 :	spreadCharge[1] <= writeData[7:0];
-				6'd22 :	spreadCharge[2] <= writeData[7:0];
-				6'd23 :	spreadCharge[3] <= writeData[7:0];
-				6'd24 :	spreadCharge[4] <= writeData[7:0];
-				6'd25 :	spreadCharge[5] <= writeData[7:0];
-				6'd26 :	outright[0] <= writeData[7:0];
-				6'd27 :	outright[1] <= writeData[7:0];
-				6'd28 :	begin outright[2] <= writeData[7:0];
-								startInterMonth <= 1; 
+				6'd9 	:  outrightRate[0]			<= writeData[15:0];
+			   6'd10 : 	outrightRate[1] 			<= writeData[15:0];
+				6'd11 : 	ratio[0] 					<= writeData[7:0];
+				6'd12 : 	ratio[1] 					<=  writeData[7:0];
+				6'd13 : 	begin interRate 			<= writeData[7:0];
+									startCross 			<= 1'd1;					//Starting Cross Commodity calculation
 							end
-				6'd29 : outrightRate[0]	<= writeData[15:0];
-			   6'd30 : outrightRate[1] <= writeData[15:0];
-				6'd31 : ratio[0] <= writeData[7:0];
-				6'd32 : ratio[1] <=  writeData[7:0];
-				6'd33 : begin interRate <= writeData[7:0];
-				              startCross <= 1;
-						  end
-				default: begin	startScanRisk <= 0;
-									startInterMonth <= 0;
-									startCross <= 0;
+				6'd14 :	maturity[0] 				<= writeData[7:0];
+				6'd15 :	maturity[1] 				<= writeData[7:0];
+				6'd16 :	maturity[2] 				<= writeData[7:0];
+				6'd17 :	maturity[3] 				<= writeData[7:0];
+				6'd18 :	maturity[4] 				<= writeData[7:0];
+				6'd19 :	maturity[5] 				<= writeData[7:0];
+				6'd20 :	maturity[6] 				<= writeData[7:0];
+				6'd21 :	maturity[7] 				<= writeData[7:0];
+				6'd22 :	tierMax[0] 					<= writeData[3:0];
+				6'd23 :	tierMax[1] 					<= writeData[3:0];
+				6'd24 :	tierMax[2] 					<= writeData[3:0];
+				6'd25 :	spreadCharge[0] 			<= writeData[7:0];
+				6'd26 :	begin	spreadCharge[1] 	<= writeData[7:0];
+									startInterMonth 	<= 1'd1;					//Early Start to Intermonth Spread Charge
+							end
+				6'd27 :	spreadCharge[2] 			<= writeData[7:0];
+				6'd28 :	spreadCharge[3] 			<= writeData[7:0];
+				6'd29 :	spreadCharge[4] 			<= writeData[7:0];
+				6'd30 :	spreadCharge[5] 			<= writeData[7:0];
+				6'd31 :	outright[0] 				<= writeData[7:0];
+				6'd32 :	outright[1] 				<= writeData[7:0];
+				6'd33 :	outright[2] 				<= writeData[7:0];
+				default: begin	startScanRisk 		<= 1'd0;
+									startInterMonth 	<= 1'd0;
+									startCross 			<= 1'd0;
 							end	
 			endcase		
-	end
-	else if (chipselect && read ) begin
+	end else if (chipselect && read ) begin
 		readData[15:0] <= initialMargin[15:0];
 	end
 end
@@ -111,7 +110,7 @@ end
 						
 always_comb begin
 
-	initialMargin = scanningRisk + TSC + crossCommCharge;
+	initialMargin = (spreadDone) ? (scanningRisk + TSC + crossCommCharge) : 0;
 
 end
 endmodule
