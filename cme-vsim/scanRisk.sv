@@ -1,3 +1,7 @@
+`define compareMag(x,y) ((x)>(y)) ? (x) : (y);
+`define compareUnity(x,y,z) (x) ? (y) : (z);
+
+
 module scanRisk(	input logic 			clk,
 						input logic 			reset,
 						input logic [15:0]	priceScanRange,
@@ -13,118 +17,90 @@ module scanRisk(	input logic 			clk,
 		logic [31:0]	level1[0:3];
 		logic [31:0]	level2[0:1];
 		logic [31:0]	level3;
-		logic [31:0]	scanningRisk100;
-		integer i,j,k;
+		logic [15:0]	scanningRiskTmp;
+		integer i;
+		logic [7:0] 	underlyingPriceMovement[0:7];
+		
+		parameter	UNDERLYING33  = 8'd42,	//33% of 128, Wieght 100%
+						UNDERLYING67  = 8'd86,	//67% of 128, Wieght 100%
+						UNDERLYING100 = 8'd128,	//100% of 128, Wieght 100%
+						UNDERLYING300 = 8'd127;	//300% of 128, Wieght 33%
 		
 		always_ff @ (posedge clk)  begin
 		
-		if(~reset) begin
-		
-			scanningRisk = 0;
-			netPos = 0;
-			for (i = 0; i < 8; i = i + 1) begin
-			priceChange[i] = 0;
-			rowLoss[i] = 0; end
-			for (j = 0; j < 4; j = j + 1) begin
-			level1[j] = 0; end
-			for (k = 0; k < 2; k = k + 1) begin
-			level2[k] = 0; end
-			level3 = 0;
-			scanningRisk100 = 0;
-		end
-		else begin
-		
-				netPos = (((position[0]+ position[1])+ (position[2]+ position[3]))+ ((position[4]+ position[5])+ (position[6]+ position[7])));				
-
-				priceChange[0] =  8'd42 * priceScanRange;		//row 3
-
-				priceChange[1] = -8'd42 * priceScanRange; 	//row 5
-
-				priceChange[2] =  8'd86 * priceScanRange;		//row 7
-
-				priceChange[3] = -8'd86 * priceScanRange;		//row 9
-
-				priceChange[4] =  8'd128 * priceScanRange;	//row 11
-
-				priceChange[5] = -8'd128 * priceScanRange;	//row 13
-
-				priceChange[6] =  8'd127 * priceScanRange;		//row 15
-
-				priceChange[7] = -8'd127 * priceScanRange;		//row 16
-
-//				priceChange[0] =  8'd33 * priceScanRange;		//row 3
-//
-//				priceChange[1] = -8'd33 * priceScanRange; 	//row 5
-//
-//				priceChange[2] =  8'd67 * priceScanRange;		//row 7
-//
-//				priceChange[3] = -8'd67 * priceScanRange;		//row 9
-//
-//				priceChange[4] =  8'd100 * priceScanRange;	//row 11
-//
-//				priceChange[5] = -8'd100 * priceScanRange;	//row 13
-//
-//				priceChange[6] =  8'd99 * priceScanRange;		//row 15
-//
-//				priceChange[7] = -8'd99 * priceScanRange;		//row 16
-
-				
-				
-				//Multiple of 128
-		
-				rowLoss[0] = priceChange[0] * netPos;		//row 3
-
-				//rowLoss[1] = priceChange[1] * netPos;		//row 5
-				rowLoss[1] = ~rowLoss[0] + 1'd1;
-
-				rowLoss[2] = priceChange[2] * netPos;		//row 7
-
-				//rowLoss[3] = priceChange[3] * netPos;		//row 9
-				rowLoss[3] = ~rowLoss[2] + 1'd1;
-
-				rowLoss[4] = priceChange[4] * netPos;		//row 11
-
-				//rowLoss[5] = priceChange[5] * netPos;		//row 13
-				rowLoss[5] = ~rowLoss[4] + 1'd1;
-
-				rowLoss[6] = priceChange[6] * netPos;		//row 15
-				
-				//rowLoss[7] = priceChange[7] * netPos;		//row 16
-				rowLoss[7] = ~rowLoss[6] + 1'd1;
-
-				
-			
-			if (netPos == 0)
+			if(~reset) begin
 				scanningRisk = 0;
-			else begin
-				//level1[0] = (rowLoss[0] > rowLoss[1]) ? rowLoss[0] : rowLoss[1];
-				level1[0] = (rowLoss[1][31]) ? rowLoss[0] : rowLoss[1];
+				netPos = 0;
+				level3 = 0;
+				scanningRiskTmp = 0;
+				for (i = 0; i < 8; i = i + 1) begin
+					priceChange[i] = 0;
+					rowLoss[i] = 0;
+				end
+				for (i = 0; i < 4; i = i + 1) begin
+					level1[i] = 0;
+				end
+				for (i = 0; i < 2; i = i + 1) begin
+					level2[i] = 0;
+				end
+				for (i = 0; i < 8; i = i + 1) begin
+					case (i)
+						0 : underlyingPriceMovement[i] =  UNDERLYING33;
+						1 : underlyingPriceMovement[i] = -UNDERLYING33;
+						2 : underlyingPriceMovement[i] =  UNDERLYING67;
+						3 : underlyingPriceMovement[i] = -UNDERLYING67;
+						4 : underlyingPriceMovement[i] =  UNDERLYING100;
+						5 : underlyingPriceMovement[i] = -UNDERLYING100;
+						6 : underlyingPriceMovement[i] =  UNDERLYING300;
+						7 : underlyingPriceMovement[i] = -UNDERLYING300;
+					endcase
+				end
+			end else begin
+					
+					
+				//Accumulating all the positions		
+				netPos = (((position[0]+ position[1])+ (position[2]+ position[3]))+ ((position[4]+ position[5])+ (							position[6]+ position[7])));
 				
-				//level1[1] = (rowLoss[2] > rowLoss[3]) ? rowLoss[2] : rowLoss[3];
-				level1[1] = (rowLoss[3][31]) ? rowLoss[2] : rowLoss[3];
+				//Underlying price movement of price scan range
+				for (i = 0; i < 8; i = i + 1) begin
+					priceChange[i] = underlyingPriceMovement[i] * priceScanRange;
+				end
+					
+				//Row loss multiplied with price change				
+				//Multiple of 128
+				for (i = 0; i < 4; i = i + 1) begin
+					rowLoss[(2*i)] = priceChange[(2*i)] * netPos;
+					rowLoss[((2*i) + 1)] = ~rowLoss[(2*i)] + 1'd1;
+				end
+					
 				
-				//level1[2] = (rowLoss[4] > rowLoss[5]) ? rowLoss[4] : rowLoss[5];
-				level1[2] = (rowLoss[5][31]) ? rowLoss[4] : rowLoss[5];
+				if (netPos == 0)
 				
-				//level1[3] = (rowLoss[6] > rowLoss[7]) ? rowLoss[6] : rowLoss[7];
-				level1[3] = (rowLoss[7][31]) ? rowLoss[6] : rowLoss[7];
+					scanningRisk = 0;//If net position is 0 then no need to perform any comparison/multiplication
+					
+				else begin
+				
+					//Level 1 comparison between rows with same value but opposite signs			
+					for (i = 0; i < 4; i = i + 1) begin
+						level1[i] = `compareUnity(rowLoss[((2*i) + 1)][31],rowLoss[(2*i)],rowLoss[((2*i) + 1)]);
+					end
+					
+				end
+					
+				//Level 2 comparison between (33% and 67%) and (100% and 300%) underlying price movements
+				level2[0] = `compareMag(level1[0],level1[1]);
+				level2[1] = `compareMag(level1[2],level1[3]);
+				
+				//Level 3 comparison between the winner of top 2
+				level3 = `compareMag(level2[0],level2[1]);
+				
+							
+				//Dividing by 128 for the final answer
+				scanningRiskTmp = level3 >> 7;
+				
+				//If scanning risk is negetive then scanning risk in 0
+				scanningRisk = `compareUnity(scanningRiskTmp[15],0,scanningRiskTmp);
 			end
-				
-
-		
-			level2[0] = (level1[0] > level1[1]) ? level1[0] : level1[1];
-			
-			level2[1] = (level1[2] > level1[3]) ? level1[2] : level1[3];
-			
-
-			
-			//scanningRisk100 = (level2[0] > level2[1]) ? level2[0] : level2[1];
-			level3 = (level2[0] > level2[1]) ? level2[0] : level2[1];
-			
-			scanningRisk100 = (level3[31]) ? 0 : level3;
-			scanningRisk = scanningRisk100 >> 7;
-			//scanningRisk = (scanningRisk100 / 100);
-		end
 		
 	end
 		

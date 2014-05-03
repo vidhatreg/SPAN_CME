@@ -23,6 +23,7 @@ reg [15:0] outrightRate[0:1];
 reg [7:0] ratio[0:1];
 reg [7:0] interRate;
 logic startScanRisk, startInterMonth, startCross;
+integer i;
 
 scanRisk scanRisk0(.reset(startScanRisk), .*);
 
@@ -35,40 +36,25 @@ always_ff @ (posedge clk) begin
 	if (reset) begin
 		   startScanRisk <= 0;
 			startInterMonth <= 0;
-			position[0] <= 0;
-			position[1] <= 0;
-			position[2] <= 0;
-			position[3] <= 0;
-			position[4] <= 0;
-			position[5] <= 0;
-			position[6] <= 0;
-			position[7] <= 0;
-			maturity[0] <= 0;
-			maturity[1] <= 0;
-			maturity[2] <= 0;
-			maturity[3] <= 0;
-			maturity[4] <= 0;
-			maturity[5] <= 0;
-			maturity[6] <= 0;
-			maturity[7] <= 0;
-			tierMax[0] <= 0;
-			tierMax[1] <= 0;
-			tierMax[2] <= 0;
-			spreadCharge[0] <= 0;
-			spreadCharge[1] <= 0;
-			spreadCharge[2] <= 0;
-			spreadCharge[3] <= 0;
-			spreadCharge[4] <= 0;
-			spreadCharge[5] <= 0;
-			outright[0] <= 0;
-			outright[1] <= 0;
-			outright[2] <= 0;
 			priceScanRange <= 0;
-			outrightRate[0] <= 0;
-			outrightRate[1] <= 0;
-			ratio[0] <= 0;
-			ratio[1] <= 0;
+			startCross <= 0;
 			interRate <= 0;
+			for (i = 0; i < 8; i = i + 1) begin
+				position[i] <= 0;
+				maturity[i] <= 0;
+			end
+			for (i = 0; i < 3; i = i + 1) begin
+				tierMax[i] <= 0;
+				outright[i] <= 0;
+			end 
+			for (i = 0; i < 6; i = i + 1) begin
+				spreadCharge[i] <= 0;
+			end
+			for (i = 0; i < 2; i = i + 1) begin
+				outrightRate[i] <= 0;
+				ratio[i] <= 0;
+			end
+			
 	end else if (chipselect && write) begin
 			case (offset) 
 				6'd0 :   priceScanRange <= writeData[15:0];

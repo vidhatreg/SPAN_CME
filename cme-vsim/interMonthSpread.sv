@@ -1,3 +1,19 @@
+//`define sortPosition(a=0,b=0,c=0,d=0,e=0,f=0)	tier1Short[i] 	<= a;\
+//																tier1Long[i] 	<= b;\
+//																tier2Short[i] 	<= c;\
+//																tier2Long[i] 	<= d;\
+//																tier3Short[i] 	<= e;\
+//																tier3Long[i] 	<= f;
+
+//`define accumulate(index,direction) /*tier``index``direction``Final <= */tier``index``direction``[0] + tier``index``direction``[1] + tier``index``direction``[2] + tier``index``direction``[3] + tier``index``direction``[4] + tier``index``direction``[5] + tier``index``direction``[6] + tier``index``direction``[7];
+//`ifndef accumulate
+//`define accumulate(index) (tier``index``Short[0])// + (tier``index``Short[1]) + (tier``index``Short[2]) + (tier``index``Short[3]) + (tier``index``Short[4]) + (tier``index``Short[5]) + (tier``index``Short[6]) + (tier``index``Short[7]);
+//`endif
+
+//`define TSCLong(i) \
+//	reg [6:0] TSC``i``Long;\
+///*`define TSCShort(i)*/reg [6:0]TSC``i``Short;
+
 module interMonthSpread(input logic clk,
 input logic reset,
 input logic [3:0] tierMax[0:2], 
@@ -14,8 +30,12 @@ reg [15:0] magTier1ShortFinal, magTier2ShortFinal, magTier3ShortFinal;
 logic tsc123Start, tsc1Done, tsc2Done, tsc3Done, tsc4Done, tsc5Done, tsc6Done;
 reg [15:0] TSC1, TSC2, TSC3, TSC4, TSC5, TSC6;
 reg [15:0] out1, out2, out3;
-integer i,j,k,l;
+integer i,l;
 reg [15:0]tier1ShortFinal, tier1LongFinal, tier2ShortFinal, tier2LongFinal, tier3ShortFinal, tier3LongFinal;
+////for(i = 1; i < 7; i = i + 1) begin
+//	`TSCLong(i);
+//	reg [6:0] `TSCShort(i);
+//end
 reg [6:0] TSC1Long, TSC1Short, TSC2Long, TSC2Short, TSC3Long, TSC3Short, TSC4Long, TSC4Short, TSC5Long, TSC5Short, TSC6Long, TSC6Short;
 reg tsc123Done;
 
@@ -37,19 +57,9 @@ reg statusForTSC6;// = ((TSC2Long != 0) && (TSC5Short != 0));
 always_ff@(posedge clk) begin
 	if (~reset) begin 
 	   TSC <= 0;
-	   tsc123Start <= 0; 
-		for (j = 0; j < 8; j = j + 1) begin
-			tier1Short[j] <= 0;
-			tier1Long[j] <= 0;
-			tier2Short[j] <= 0;
-			tier2Long[j] <= 0;
-			tier3Short[j] <= 0;
-			tier3Long[j] <= 0; end
-		for (k = 0; k < 3; k = k + 1) begin
-			short[k] <= 0;
-			long[k] <= 0; end
-			magTier1ShortFinal <= 0;
-			magTier2ShortFinal <= 0;
+	   tsc123Start <= 0;
+		magTier1ShortFinal <= 0;
+		magTier2ShortFinal <= 0;
 			magTier3ShortFinal <= 0;
 			TSC1 <= 0;
 			TSC2 <= 0;
@@ -88,60 +98,39 @@ always_ff@(posedge clk) begin
 			statusForTSC4 <= 1'd0;
 			statusForTSC5 <= 1'd0;
 			statusForTSC6 <= 1'd0;
-			statusFor123 <= 1'd0;
+			statusFor123 <= 1'd0; 
+		for (i = 0; i < 8; i = i + 1) begin
+			tier1Short[i]	<= 0;
+			tier1Long[i] 	<= 0;
+			tier2Short[i] 	<= 0;
+			tier2Long[i] 	<= 0;
+			tier3Short[i] 	<= 0;
+			tier3Long[i] 	<= 0; end
+		for (i = 0; i < 3; i = i + 1) begin
+			short[i] <= 0;
+			long[i] 	<= 0; end
 		end else begin
-		
+//`define sort(index,short1=0,long1=0,short2=0,long2=0,short3=0,long3=0)\
+//				for (i = 0tier``index``Short[index] <= short1;\
+//				tier``index``Long[index] <= long1;\
 		for(i = 0; i < 8; i = i + 1) begin
-			if((tierMax[0] > maturity[i]) && (position[i][15] == 1)) begin
-				tier1Short[i] <= position[i];
-				tier1Long[i] <= 0;
-				tier2Short[i] <= 0;
-				tier2Long[i] <= 0;
-				tier3Short[i] <= 0;
-				tier3Long[i] <= 0;
 			
-			end else if((tierMax[0] > maturity[i]) && (position[i][15] == 0)) begin
-				tier1Long[i] <= position[i];
-				tier1Short[i] <= 0;
-				tier2Short[i] <= 0;
-				tier2Long[i] <= 0;
-				tier3Short[i] <= 0;
-				tier3Long[i] <= 0;
-			end else if((tierMax[1] > maturity[i]) && (position[i][15] == 1)) begin
-				tier2Short[i] <= position[i];
-				tier1Long[i] <= 0;
-				tier1Short[i] <= 0;
-				tier2Long[i] <= 0;
-				tier3Short[i] <= 0;
-				tier3Long[i] <= 0;
+			tier1Short[i] 	<= ((tierMax[0] > maturity[i]) && (position[i][15] == 1)) ? position[i] : 0;
+			tier1Long[i] 	<= ((tierMax[0] > maturity[i]) && (position[i][15] == 0)) ? position[i] : 0;
+			tier2Short[i] 	<= ((tierMax[1] > maturity[i]) && (tierMax[0] <= maturity[i]) && (position[i][15] == 									1)) ? position[i] : 0;
+			tier2Long[i] 	<= ((tierMax[1] > maturity[i]) && (tierMax[0] <= maturity[i]) && (position[i][15] == 									0)) ? position[i] : 0;
+			tier3Short[i] 	<= ((tierMax[2] > maturity[i]) && (tierMax[1] <= maturity[i]) && (position[i][15] == 									1)) ? position[i] : 0;
+			tier3Long[i] 	<= ((tierMax[2] > maturity[i]) && (tierMax[1] <= maturity[i]) && (position[i][15] == 									0)) ? position[i] : 0;
 			
-			end else if((tierMax[1] > maturity[i]) && (position[i][15] == 0)) begin
-				tier2Long[i] <= position[i];
-				tier1Long[i] <= 0;
-				tier1Short[i] <= 0;
-				tier2Short[i] <= 0;
-				tier3Short[i] <= 0;
-				tier3Long[i] <= 0;
-				
-			end else if((tierMax[2] > maturity[i]) && (position[i][15] == 1)) begin
-				tier3Short[i] <= position[i];
-				tier1Long[i] <= 0;
-				tier1Short[i] <= 0;
-				tier2Long[i] <= 0;
-				tier2Short[i] <= 0;
-				tier3Long[i] <= 0;
-			
-			end else if((tierMax[2] > maturity[i]) && (position[i][15] == 0)) begin
-				tier3Long[i] <= position[i];
-				tier1Long[i] <= 0;
-				tier1Short[i] <= 0;
-				tier2Long[i] <= 0;
-				tier3Short[i] <= 0;
-				tier2Short[i] <= 0;
-			end
-		end//for(i = 0; i < 8; i = i + 1)
+		end
+		
+//`define accumulate(index,direction) \
+//						tier``index``direction``Final <= tier``index``direction``[0] + tier``index``direction``[1] + tier``index``direction``[2] + tier``index``direction``[3] + tier``index``direction``[4] + tier``index``direction``[5] + tier``index``direction``[6] + tier``index``direction``[7];
+						
+						
 //		for (l = 0; l < 8; l = l + 1) begin
 	tier1ShortFinal <= tier1Short[0] + tier1Short[1] + tier1Short[2] + tier1Short[3] + tier1Short[4] + tier1Short[5] + tier1Short[6] + tier1Short[7];
+//	 tier1ShortFinal <= `accumulate(1) + tier1Short[1] + tier1Short[2] + tier1Short[3] + tier1Short[4] + tier1Short[5] + tier1Short[6] + tier1Short[7];
 	tier1LongFinal <= tier1Long[0] + tier1Long[1] + tier1Long[2] + tier1Long[3] + tier1Long[4] + tier1Long[5] + tier1Long[6] + tier1Long[7];
 	tier2ShortFinal <= tier2Short[0] + tier2Short[1] + tier2Short[2] + tier2Short[3] + tier2Short[4] + tier2Short[5] + tier2Short[6] + tier2Short[7];
 	tier2LongFinal <= tier2Long[0] + tier2Long[1] + tier2Long[2] + tier2Long[3] + tier2Long[4] + tier2Long[5] + tier2Long[6] + tier2Long[7];
