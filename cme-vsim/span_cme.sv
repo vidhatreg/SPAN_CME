@@ -14,6 +14,7 @@ module span_cme(
 /***********************************************	Declarations	*****************************************/
 /**********************************************************************************************************/
 
+
 	reg [15:0] 	initialMargin;			//Final calculated value of Initial Margin
 	reg [15:0] 	scanningRisk;			//First Component: The Scanning Risk
 	reg [15:0] 	TSC;						//Second Component: Tier Spread Charge
@@ -23,11 +24,10 @@ module span_cme(
 //Portfolio inputs
 //Maximum number of instruments is 8
 //Maximum number of Tiers is 3
-
 	reg [15:0]	priceScanRange;		//Price Scan Range
-	reg [15:0] 	position [0:7];		//Array for positions of instrument.
+	reg [15:0] 	position [0:7];		//Array for positions of instrument
 	reg [7:0] 	maturity [0:7];		//Array for maturity of instrument, in months
-	reg [3:0] 	tierMax[0:2];			//Array for upper limit of tiers, in months.
+	reg [3:0] 	tierMax[0:2];			//Array for upper limit of tiers, in months
 	reg [7:0] 	spreadCharge [0:5];	//Array for spread charge between tiers, in order of priority
 	reg [7:0] 	outright [0:2];		//Array for outright rate for spreads between tiers, in order of priority
 	reg [15:0] 	outrightRate[0:1];	//Array for Outright rate for Cross Commodity Charge

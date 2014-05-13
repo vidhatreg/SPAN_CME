@@ -12,7 +12,6 @@ module scanRisk(
 
 
 
-
 /**********************************************************************************************************/
 /***********************************************	Declarations	*****************************************/
 /**********************************************************************************************************/
@@ -24,7 +23,7 @@ module scanRisk(
 	logic [31:0]	level2[0:1];															//Array for selecting the greater value between the chosen(level1) values of Risk Array scenarios
 	logic [31:0]	level3;																	//The greatest the Risk Array scenario
 	logic [7:0] 	underlyingPriceMovement[0:7];										//Risk Array underlying price movements
-	logic [24:0]	scanningRiskTmp;														//Temporary scanning risk value to check if it negative or positive
+	logic [31:0]	scanningRiskTmp;														//Temporary scanning risk value to check if it negative or positive
 	
 //Loop index	
 	integer i;
@@ -113,7 +112,7 @@ module scanRisk(
 			scanningRiskTmp = level3 >> 7;												//Dividing by 128 for the final answer
 			
 			
-			scanningRisk = `compareUnity(scanningRiskTmp[24],16'd0,scanningRiskTmp);	//If scanning risk is negetive then scanning risk in 0
+			scanningRisk = `compareUnity(scanningRiskTmp[24],16'd0,scanningRiskTmp[15:0]);	//If scanning risk is negetive then scanning risk in 0
 			
 		end
 		

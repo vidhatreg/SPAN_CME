@@ -297,7 +297,8 @@ module interMonthSpread(
 
 			
 																					//Forming Tier Spread Table
-			if (positionsAccumulated) begin 
+			if (positionsAccumulated) begin
+			
 				long[0] 					<= tier1LongFinal[6:0];
 				long[1] 					<= tier2LongFinal[6:0];
 				long[2] 					<= tier3LongFinal[6:0];
@@ -307,6 +308,7 @@ module interMonthSpread(
 				short[0] 				<= magTier1ShortFinal[6:0];
 				short[1] 				<= magTier2ShortFinal[6:0];
 				short[2] 				<= magTier3ShortFinal[6:0]; 
+				
 			end
 																					//Adding up all the spreads for the final Tier Spread Charge
 			if (tscDone) TSC 			<= TSC1 + TSC2 + TSC3 + TSC4 + TSC5 + TSC6 + out1 + out2 + out3; 
@@ -325,17 +327,23 @@ module interMonthSpread(
 	end
 
 
-																					//Modules for Tier Spread Calculation
+//Modules for Tier Spread Calculation
+//Tier Spread Charge 1
 	tierSpread 	tier11SpreadCharge(.clk(clk), .reset(tsc123Start), .long(long[0]), .short(short[0]), .spreadCharge(spreadCharge[0]), .outrightChargeTier1(0), .outrightChargeTier2(0), .newLong(TSC1Long), .newShort(TSC1Short), .spread(TSC1), .outright());
 
+//Tier Spread Charge 2	
 	tierSpread 	tier22SpreadCharge(.clk(clk), .reset(tsc123Start), .long(long[1]), .short(short[1]), .spreadCharge(spreadCharge[1]), .outrightChargeTier1(0), .outrightChargeTier2(0), .newLong(TSC2Long), .newShort(TSC2Short), .spread(TSC2), .outright());
 
+//Tier Spread Charge 3	
 	tierSpread 	tier33SpreadCharge(.clk(clk), .reset(tsc123Start), .long(long[2]), .short(short[2]), .spreadCharge(spreadCharge[2]), .outrightChargeTier1(0), .outrightChargeTier2(0), .newLong(TSC3Long), .newShort(TSC3Short), .spread(TSC3), .outright());
 
+//Tier Spread Charge 4	
 	tierSpread 	tier12SpreadCharge(.clk(clk), .reset(tsc4Start), .long(TSC1Long), .short(TSC2Short), .spreadCharge(spreadCharge[3]), .outrightChargeTier1(outright[0]), .outrightChargeTier2(outright[1]), .newLong(TSC4Long), .newShort(TSC4Short), .spread(TSC4), .outright(out1));
 
+//Tier Spread Charge 5	
 	tierSpread 	tier13SpreadCharge(.clk(clk), .reset(tsc5Start), .long(inputTSC5Long), .short(TSC3Short), .spreadCharge(spreadCharge[4]), .outrightChargeTier1(outright[0]), .outrightChargeTier2(outright[2]), .newLong(TSC5Long), .newShort(TSC5Short), .spread(TSC5), .outright(out2));
 
+//Tier Spread Charge 6	
 	tierSpread 	tier23SpreadCharge(.clk(clk), .reset(tsc6Start), .long(TSC2Long), .short(inputTSC6Short), .spreadCharge(spreadCharge[5]), .outrightChargeTier1(outright[1]), .outrightChargeTier2(outright[2]), .newLong(TSC6Long), .newShort(TSC6Short), .spread(TSC6), .outright(out3));
 
 endmodule

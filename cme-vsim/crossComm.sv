@@ -15,18 +15,21 @@ module crossComm (
 	reg [15:0] outrightMargin;				//An intermediate variable for calculation
 	reg [31:0] crossCommCharge100;		//Final Cross Commodity charge in multiple of 100
 
+	
+	
 /**********************************************************************************************************/
 /************************************************	BODY	**************************************************/
 /**********************************************************************************************************/	
 	
 	always_ff@(posedge clk) begin
 
-		if(~reset)  begin
+		if(~reset)  begin																									//Preparing for calculation, resetting everything
+		
 			outrightMargin 		= 0;
 			crossCommCharge100 	= 0;
 			crossCommCharge 		= 0;
 			
-		end else begin
+		end else begin																										//Starting Cross Commodity Charge calculation
 		
 			outrightMargin 		= (outrightRate[0] * ratio[0]) + (outrightRate[1] * ratio[1]);		//The Outright Marging as per the ratios between 2 commodities
 			crossCommCharge100 	= interRate * outrightMargin;													//Inter rate selects the percentage of Outright Margin that will influence CrossCommCharge
