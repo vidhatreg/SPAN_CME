@@ -22,7 +22,7 @@ module scanRisk(
 	logic [31:0]	level1[0:3];															//Array for selecting the greater value between 2 alternate Risk Array scenarios
 	logic [31:0]	level2[0:1];															//Array for selecting the greater value between the chosen(level1) values of Risk Array scenarios
 	logic [31:0]	level3;																	//The greatest the Risk Array scenario
-	logic [7:0] 	underlyingPriceMovement[0:7];										//Risk Array underlying price movements
+	logic [8:0] 	underlyingPriceMovement[0:7];										//Risk Array underlying price movements
 	logic [31:0]	scanningRiskTmp;														//Temporary scanning risk value to check if it negative or positive
 	
 //Loop index	
@@ -75,18 +75,19 @@ module scanRisk(
 			netPos = (((position[0]+ position[1])+ (position[2]+ position[3]))+ ((position[4]+ position[5])+ (position[6]+ position[7])));
 			
 			
-			for (i = 0; i < 8; i = i + 1) begin											//Underlying price movement of price scan range
-				priceChange[i] = underlyingPriceMovement[i] * priceScanRange;
+			for (i = 0; i < 4; i = i + 1) begin											//Underlying price movement of price scan range
+				priceChange[(2*i)] = underlyingPriceMovement[(2*i)] * priceScanRange;
+				priceChange[(2*i) + 1] = ~priceChange[(2*i)] + 1'd1;
 			end
 						
 			
 			for (i = 0; i < 4; i = i + 1) begin											//Row loss multiplied with price change, multiple of 128
-				rowLoss[(2*i)] = priceChange[(2*i)] * netPos;						
+				rowLoss[(2*i)] = (netPos[15]) ? (~(priceChange[(2*i)] * (~netPos + 1'd1)) + 1'd1): (priceChange[(2*i)] * netPos);
 				rowLoss[((2*i) + 1)] = ~rowLoss[(2*i)] + 1'd1;
 			end
 				
 			
-			if (netPos == 0)
+			if (netPos == 16'd0 || netPos[15])
 			
 				scanningRisk = 16'd0;														//If net position is 0 then no need to perform any comparison/multiplication
 				
@@ -106,13 +107,13 @@ module scanRisk(
 			level2[1] 	= `compareMag(level1[2],level1[3]);
 			
 			
-			level3 		= `compareMag(level2[0],level2[1]);								//Level 3 comparison between the winner of top 2
+			level3 		= `compareMag(level2[0],level2[1]);							//Level 3 comparison between the winner of top 2
 			
 				
 			scanningRiskTmp = level3 >> 7;												//Dividing by 128 for the final answer
 			
 			
-			scanningRisk = `compareUnity(scanningRiskTmp[24],16'd0,scanningRiskTmp[15:0]);	//If scanning risk is negetive then scanning risk in 0
+			scanningRisk = scanningRiskTmp[15:0];										//If scanning risk is negetive then scanning risk in 0
 			
 		end
 		
