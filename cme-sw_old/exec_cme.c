@@ -16,19 +16,19 @@
 #include <unistd.h>
 #include <inttypes.h>
 #define NUM_OF_PORTIFOLIO 3
-int span_cme_fd;
+int vga_led_fd;
 
 /* Read and print the segment values */
 void print_output() {
-    portifolio_t port;
-    if (ioctl(span_cme_fd, SPAN_CME_READ_DIGIT, &port)) {
+    vga_led_arg_t vla;
+    if (ioctl(vga_led_fd, VGA_LED_READ_DIGIT, &vla)) {
       perror("ioctl(SPAN_CME_READ_DIGIT) failed");
       return;
     }
-    printf("%04d ", port.output);
+    printf("%04d ", vla.output);
     FILE *fpout;
     fpout = fopen("output_file.txt","a"); 
-    fprintf(fpout,"%04d \n", port.output);
+    fprintf(fpout,"%04d \n", vla.output);
     if (fpout) fclose(fpout);
   //}
   printf("\n");
@@ -37,20 +37,22 @@ void print_output() {
 /* Write the contents of the array to the display */
 void write_portifolio(short var[])
 {
-  portifolio_t port;
+  vga_led_arg_t vla;
   int i;
+  //for (i = 0 ; i < VGA_LED_DIGITS ; i++) {
     for (i=0; i< DATA_LENGTH; i++)
-    	port.input[i] = var[i];
-    port.output = 0;
-    if (ioctl(span_cme_fd, SPAN_CME_WRITE_DIGIT, &port)) {
-      perror("ioctl(SPAN_CME_WRITE_DIGIT) failed");
+    	vla.input[i] = var[i];
+    vla.output = 0;
+    if (ioctl(vga_led_fd, VGA_LED_WRITE_DIGIT, &vla)) {
+      perror("ioctl(VGA_LED_WRITE_DIGIT) failed");
       return;
     }
+  //}
 }
 
 int main()
 {
-  portifolio_t port;
+  vga_led_arg_t vla;
   int i,j,k;
   short var[DATA_LENGTH];
   static const char filename[] = "/dev/span_cme";
@@ -61,12 +63,13 @@ int main()
   
   printf("SPAN CME Userspace program started\n");
 
-  if ( (span_cme_fd = open(filename, O_RDWR)) == -1) {
+  if ( (vga_led_fd = open(filename, O_RDWR)) == -1) {
     fprintf(stderr, "could not open %s\n", filename);
     return -1;
   }
 
   for (j = NUM_OF_PORTIFOLIO ; j > 0 ; j--){
+  	
   	for(k = 0; k < DATA_LENGTH; k++) 
   		fscanf( fpin, "%hu",&var[k]);
   	//printf( " inputs: %hu, %hu ",var0,var1);
